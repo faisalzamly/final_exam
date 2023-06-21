@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserControler extends Controller
 {
@@ -12,6 +13,7 @@ class UserControler extends Controller
      */
     public function index()
     {
+        $index=DB::table('users')->get();
         return view('users.index');
     }
 
@@ -44,6 +46,7 @@ class UserControler extends Controller
      */
     public function edit(string $id)
     {
+          $user =User::where($id);
                 return view('users.edit');
     }
 
